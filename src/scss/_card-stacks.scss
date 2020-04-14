@@ -1,0 +1,125 @@
+$stacks-max: 3;
+$default-diff: 12px;
+$default-max-width: 100%;
+$default-min-width: 10%;
+$default-min-opacity: 0.25;
+
+
+@mixin card-stacks($index) {
+    bottom: ($default-diff * ($index - 1));
+    width: $default-max-width - ($default-min-width * ($index - 1));
+    box-shadow: $box-shadow;
+    opacity: $default-min-opacity * (($stacks-max + 1) - $index);
+    opacity: 1 * $index;
+}
+
+.card-stacks {
+    position: relative;
+    & .card-list {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: $card-default-size;
+        & .card {
+            position: absolute;
+            border: none;
+            left: 0;
+            right: 0;
+            height: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            overflow-y: auto;
+            opacity: 0;
+            border-radius: $rounded;
+            background-position: center;
+            transition: all 150ms ease-in-out;
+
+            @include hover() {
+
+            }
+
+            & img {
+                width: 100%;
+                height: 100%;
+            }
+
+            &::-webkit-scrollbar {
+                width: 7px;
+            }
+            &::-webkit-scrollbar-track {
+                background: transparent; 
+                margin: 10px 0;
+                border-radius: 30px
+            }
+            &::-webkit-scrollbar-thumb {
+                background: rgba(136, 136, 136, 0.5);
+                border-radius: 30px;
+            }
+            &::-webkit-scrollbar-thumb:hover {
+                background: #555; 
+            }
+        }
+
+        @for $i from 1 through $stacks-max {
+            & .card:nth-last-child(#{$i}) {
+                @include card-stacks($i);
+            }
+        }
+    }
+    & .card-stacks-control {
+        display: none;
+        animation: bounceInLeft 200ms;
+        & button {
+            @include back-drop-filter();
+            background: rgba(35, 39, 43, .5);
+            border: transparent;
+            color: $white;
+            border-radius: 100%;
+            @include hover() {
+                background: rgba(35, 39, 43, 1);
+            }
+        }
+    }
+
+    @include hover() {
+        & .card-stacks-control {
+            display: flex;
+            flex-direction: column!important;
+            position: absolute;
+            top: 25%;
+            right: 2rem;
+            transition:all 0.2s ease;
+            
+        }
+    }
+
+    & .transform-card {
+        animation: scaleDown 500ms;
+    }
+    & .transform-prev {
+        animation: scaleUp 500ms;
+    }
+}
+
+@keyframes bounceInLeft {
+    0% { opacity: 0; transform: translateX(40px); } 
+    // 60% { opacity: 1; transform: translateX(20px); } 
+    // 80% { transform: translateX(20px); } 
+    100% { transform: translateX(0); } 
+  }
+@keyframes scaleDown {
+    0% {transform: scale(1) translateY(0); opacity: 1; }
+    20% {transform: scale(1.01) translateY(20px); opacity: 0.80;}
+    40% {transform: scale(1.05) translateY(40px); opacity: 0.40;}
+    60% {transform: scale(1.10) translateY(60px); opacity: 0.20;}
+    80% {transform: scale(1.15) translateY(80px); opacity: 0.10;}
+    100% {transform: scale(1.2) translateY(100px); opacity: 0;}
+}
+@keyframes scaleUp {
+    0% {transform: scale(1.2) translateY(50px); opacity: 0; }
+    20% {transform: scale(1.15) translateY(40px); opacity: 0.10;}
+    40% {transform: scale(1.10) translateY(30px); opacity: 0.20;}
+    60% {transform: scale(1.05) translateY(20px); opacity: 0.40;}
+    80% {transform: scale(1.01) translateY(10px); opacity: 0.80;}
+    100% {transform: scale(1) translateY(0); opacity: 1;}
+}

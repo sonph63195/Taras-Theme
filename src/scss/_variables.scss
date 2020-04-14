@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+$theme-colors: (
+    "primary": #303ad9,
+    "green-light": #72d2ad,
+    "acrylic-white": rgba(255, 255, 255, 0.5),
+    "acrylic-black": rgba(0, 0, 0, 0.5),
+);
+
+
+
+// fontawsome
+$fa-font-path:              "./webfonts";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+
+// card-stacks
+$card-default-size:             348px;
+
+// utils
+$rounded: 6px !important;

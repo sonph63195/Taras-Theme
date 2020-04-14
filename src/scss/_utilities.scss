@@ -1,0 +1,7 @@
+@mixin back-drop-filter($saturate: 180%, $blur: 20px) {
+    backdrop-filter: saturate($saturate) blur($blur);
+}
+
+.blur {
+    @include back-drop-filter();
+}
