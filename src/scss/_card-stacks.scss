@@ -34,9 +34,11 @@ $default-min-opacity: 0.25;
             background-position: center;
             transition: all 150ms ease-in-out;
 
-            @include hover() {
-
-            }
+            // @include hover() {
+            //     &::-webkit-scrollbar-thumb {
+            //         background: rgba(136, 136, 136, 0.5);
+            //     }
+            // }
 
             & img {
                 width: 100%;
@@ -52,11 +54,11 @@ $default-min-opacity: 0.25;
                 border-radius: 30px
             }
             &::-webkit-scrollbar-thumb {
-                background: rgba(136, 136, 136, 0.5);
+                background: transparent;
                 border-radius: 30px;
             }
             &::-webkit-scrollbar-thumb:hover {
-                background: #555; 
+                background: rgba(136, 136, 136, 0.75); 
             }
         }
 
@@ -75,23 +77,23 @@ $default-min-opacity: 0.25;
             border: transparent;
             color: $white;
             border-radius: 100%;
-            @include hover() {
-                background: rgba(35, 39, 43, 1);
-            }
+            // @include hover() {
+            //     background: rgba(35, 39, 43, 1);
+            // }
         }
     }
 
-    @include hover() {
-        & .card-stacks-control {
-            display: flex;
-            flex-direction: column!important;
-            position: absolute;
-            top: 25%;
-            right: 2rem;
-            transition:all 0.2s ease;
+    // @include hover() {
+    //     & .card-stacks-control {
+    //         display: flex;
+    //         flex-direction: column!important;
+    //         position: absolute;
+    //         top: 25%;
+    //         right: 2rem;
+    //         transition:all 0.2s ease;
             
-        }
-    }
+    //     }
+    // }
 
     & .transform-card {
         animation: scaleDown 500ms;

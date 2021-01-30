@@ -5,3 +5,7 @@
 .blur {
     @include back-drop-filter();
 }
+
+.brand-name {
+    text-decoration: none;
+}

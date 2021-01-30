@@ -1,146 +1,147 @@
 $enable-gradients: true;
 
 @mixin button-boder-variant($color, $border-color: darken($color, 20%)) {
-	@include gradient-bg($color);
-	border-color: $border-color;
-	color: color-yiq($color);
+  @include gradient-bg($color);
+  border-color: $border-color;
+  color: color-yiq($color);
 
-	@include hover() {
-		box-shadow: $box-shadow;
-		color: color-yiq($color);
-		@include gradient-bg(darken($color, 3%));
-	}
+  &:hover {
+  	box-shadow: $box-shadow;
+  	color: color-yiq($color);
+  	@include gradient-bg(darken($color, 3%));
+  }
 
-	&:focus,
+  &:focus,
   &.focus {
     box-shadow: 0 0 0.5rem 0.09rem rgba($border-color, 0.5);
-	}
-	
-	&:active,
-	&.active {
-		background: darken($color, $amount: 5%);
-		border-color: transparent;
-	}
+  }
 
-	&.disabled,
+  &:active,
+  &.active {
+    background: darken($color, $amount: 5%);
+    border-color: transparent;
+  }
+
+  &.disabled,
   &:disabled {
-		background: $gray-600;
-		border-color: transparent;
-		color: color-yiq($gray-600);
-		@include box-shadow(none);
-		cursor: not-allowed;
-		@include hover() {
-			box-shadow: none;
-		}
-	}
+    background: $gray-600;
+    border-color: transparent;
+    color: color-yiq($gray-600);
+    @include box-shadow(none);
+    cursor: not-allowed;
+    &:hover {
+    	box-shadow: none;
+    }
+  }
 }
 
 @mixin button-flat-variant($color) {
-	background-color: lighten($color, 40%);
-	color: darken($color, 10%);
+  background-color: lighten($color, 40%);
+  color: darken($color, 10%);
 
-	@include hover() {
-		box-shadow: $box-shadow;
-		background-color: $color;
-		color: color-yiq($color);
-	}
+  &:hover {
+  	box-shadow: $box-shadow;
+  	background-color: $color;
+  	color: color-yiq($color);
+  }
 
-	&:focus,
+  &:focus,
   &.focus {
     box-shadow: 0 0 0.5rem 0.09rem rgba($color, 0.5);
-	}
-	
-	&:active,
-	&.active {
-		background: darken($color, $amount: 5%);
-		border-color: transparent;
-		color: color-yiq($color);
-	}
+  }
 
-	&.disabled,
+  &:active,
+  &.active {
+    background: darken($color, $amount: 5%);
+    border-color: transparent;
+    color: color-yiq($color);
+  }
+
+  &.disabled,
   &:disabled {
-		background: $gray-600;
-		border-color: transparent;
-		color: color-yiq($gray-600);
-		@include box-shadow(none);
-		cursor: not-allowed;
-		@include hover() {
-			box-shadow: none;
-		}
-	}
+    background: $gray-600;
+    border-color: transparent;
+    color: color-yiq($gray-600);
+    @include box-shadow(none);
+    cursor: not-allowed;
+    &:hover {
+    	box-shadow: none;
+    }
+  }
 }
 
 @mixin button-fa-variant($color, $border-color: darken($color, 20%)) {
-	@include gradient-bg($color);
-	color: color-yiq($color);
-	border-radius: 100%;
-	border-color: $border-color;
-	box-shadow: $box-shadow;
+  @include gradient-bg($color);
+  color: color-yiq($color);
+  border-radius: 100%;
+  border-color: $border-color;
+  box-shadow: $box-shadow;
 
-	@include hover() {
-		box-shadow: $box-shadow-lg;
-		background-color: $color;
-		color: color-yiq($color);
-	}
+  &:hover {
+  	box-shadow: $box-shadow-lg;
+  	background-color: $color;
+  	color: color-yiq($color);
+  }
 
-	&:focus,
+  &:focus,
   &.focus {
     box-shadow: 0 0 0.5rem 0.09rem rgba($color, 0.5);
-	}
-	
-	&:active,
-	&.active {
-		background: darken($color, $amount: 5%);
-		border-color: transparent;
-		color: color-yiq($color);
-	}
+  }
 
-	&.disabled,
+  &:active,
+  &.active {
+    background: darken($color, $amount: 5%);
+    border-color: transparent;
+    color: color-yiq($color);
+  }
+
+  &.disabled,
   &:disabled {
-		background: $gray-600;
-		border-color: transparent;
-		color: color-yiq($gray-600);
-		@include box-shadow(none);
-		cursor: not-allowed;
-		@include hover() {
-			box-shadow: none;
-		}
-	}
+    background: $gray-600;
+    border-color: transparent;
+    color: color-yiq($gray-600);
+    @include box-shadow(none);
+    cursor: not-allowed;
+    &:hover {
+    	box-shadow: none;
+    }
+  }
+}
+
+/** button with border **/
+@each $color, $value in $theme-colors {
+  .btn-bd-#{$color} {
+    @include button-boder-variant($value);
+  }
 }
 
 @each $color, $value in $theme-colors {
-	.btn-bd-#{$color} {
-		@include button-boder-variant($value);
-	}
+  .btn-flat-#{$color} {
+    @include button-flat-variant($value);
+  }
 }
 
 @each $color, $value in $theme-colors {
-	.btn-flat-#{$color} {
-		@include button-flat-variant($value);
-	}
-}
-
-@each $color, $value in $theme-colors {
-	.btn-fa-#{$color} {
-		@include button-fa-variant($value);
-	}
+  .btn-fa-#{$color} {
+    @include button-fa-variant($value);
+  }
 }
 
 .btn {
-	&-pill {
-		border-radius: 30px;
-	}
-	&.icon {
-		& i {
-			font-size: inherit;
-    	line-height: inherit;
-			&.left {
-				margin-right: 15px;
-			}
+  &-pill {
+    border-radius: 30px;
+  }
+  &.icon {
+    & i {
+      font-size: inherit;
+      line-height: inherit;
+      &.left {
+        margin-right: 15px;
+      }
 
-			&.right {
-				margin-left: 15px;
-			}
-		}
-	}
+      &.right {
+		margin-left: 15px;
+      }
+    }
+  }
 }

@@ -10,7 +10,9 @@ $('.next').click(function (e) {
     
     setTimeout(function() {
         if ( $('.card').hasClass('active') ) {
-            var $slicedCard = $('.card-stacks .card-list .card').slice(lastCardIndex).removeClass('transform-card active');
+            var $slicedCard = $('.card-stacks .card-list .card').slice(lastCardIndex)
+                                                                .removeClass('transform-card active');
+                                                                
             $('.card-stacks .card-list').prepend($slicedCard);
         }
     }, 200);
